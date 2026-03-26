@@ -14,7 +14,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 ENV ANDROID_HOME=/usr/lib/android-sdk
 
 RUN yes | sdkmanager --licenses \
-  && sdkmanager "platforms;android-34" "build-tools;34.0.0" "platform-tools"
+  && sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools"
 
 WORKDIR /app
 COPY ./application /app
