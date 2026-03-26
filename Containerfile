@@ -42,7 +42,7 @@ COPY ./application /app
 # Ensure gradlew is executable
 RUN chmod +x ./gradlew
 
-VOLUME /app/app/build/outputs/apk/release/
+VOLUME /app/app/build/outputs/apk/
 
 # Build the signed release APK; runs at container start so output is written to the mounted volume
 CMD ["./gradlew", "assembleRelease", "--no-daemon"]
