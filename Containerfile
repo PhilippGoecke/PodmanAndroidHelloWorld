@@ -39,6 +39,15 @@ RUN keytool -genkey -v \
 WORKDIR /app
 COPY ./application /app
 
+# Create gradle.properties with signing config
+RUN echo "org.gradle.jvmargs=-Xmx2048m" > gradle.properties \
+  && echo "android.useAndroidX=true" >> gradle.properties \
+  && echo "android.enableJetifier=true" >> gradle.properties \
+  && echo "KEYSTORE_PATH=$KEYSTORE_PATH" >> gradle.properties \
+  && echo "KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD" >> gradle.properties \
+  && echo "KEY_ALIAS=$KEY_ALIAS" >> gradle.properties \
+  && echo "KEY_PASSWORD=$KEY_PASSWORD" >> gradle.properties
+
 # Ensure gradlew is executable
 RUN chmod +x ./gradlew
 
